@@ -1,0 +1,4 @@
+title: 我的博客  # 博客标题
+description: 这是用 Jekyll 和 GitHub Pages 搭建的博客  # 描述
+author: 你的名字  # 作者名
+theme: minima  # 使用官方默认主题（无需额外安装）
