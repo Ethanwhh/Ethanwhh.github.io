@@ -1,21 +1,22 @@
 <section class="hero is-fullheight has-text-centered" id="contact">
     <div class="hero-body">
         <div class="container">
-            <h1 class="title is-1 is-uppercase has-text-weight-bold has-text-black mb-6">
+            <h1 class="title is-1 is-uppercase has-text-weight-bold has-text-black" style="margin-bottom: 2rem;">
                 Contact Me
             </h1>
-            <h2 class="subtitle is-4 has-text-grey mb-6">
+            <h2 class="subtitle is-4 has-text-grey" style="margin-bottom: 3rem;">
                 Feel free to reach out through any of the following ways
             </h2>
             
             <!-- Email Contact Button -->
             {% unless site.email == %}
-            <div class="columns is-centered mb-4">
+            <div class="columns is-centered" style="margin-bottom: 2rem;">
                 <div class="column is-half">
                     <a href="mailto:{{site.email}}"
                         class="button is-large is-fullwidth is-rounded is-black is-outlined has-text-weight-semibold"
-                        target="_blank">
-                        <span class="icon is-medium">
+                        target="_blank"
+                        style="padding: 1.5rem 2rem;">
+                        <span class="icon is-medium" style="margin-right: 0.75rem;">
                             <i class="fas fa-envelope"></i>
                         </span>
                         <span>Send me an Email</span>
@@ -24,67 +25,71 @@
             </div>
             {% endunless %}
             
-            <hr class="my-6">
+            <hr style="margin: 3rem auto; width: 80%; max-width: 600px;">
             
             <!-- Social Media Icons Section -->
-            <h3 class="title is-4 has-text-weight-semibold has-text-black mb-5">
+            <h3 class="title is-4 has-text-weight-semibold has-text-black" style="margin-bottom: 2.5rem; margin-top: 2rem;">
                 Find Me On These Platforms
             </h3>
             
-            <div class="columns is-centered is-mobile is-multiline">
+            <div class="columns is-centered is-mobile is-multiline" style="gap: 1.5rem;">
                 {% unless site.github_username == %}
-                <div class="column is-narrow">
+                <div class="column is-narrow" style="padding: 1rem;">
                     <a href="https://github.com/{{site.github_username}}" 
                        target="_blank" 
                        class="button is-large is-white"
-                       title="GitHub">
+                       title="GitHub"
+                       style="width: 100px; height: 100px; border-radius: 12px;">
                         <span class="icon is-large has-text-black">
                             <i class="fab fa-github fa-2x"></i>
                         </span>
                     </a>
-                    <p class="has-text-weight-semibold mt-2">GitHub</p>
+                    <p class="has-text-weight-semibold" style="margin-top: 1rem;">GitHub</p>
                 </div>
                 {% endunless %}
                 
                 {% unless site.xiaohongshu_username == %}
-                <div class="column is-narrow">
+                <div class="column is-narrow" style="padding: 1rem;">
                     <a href="https://www.xiaohongshu.com/user/profile/{{site.xiaohongshu_username}}" 
                        target="_blank" 
                        class="button is-large is-white"
-                       title="Xiaohongshu">
+                       title="Xiaohongshu"
+                       style="width: 100px; height: 100px; border-radius: 12px;">
                         <span class="icon is-large has-text-danger">
                             <i class="fas fa-book fa-2x"></i>
                         </span>
                     </a>
-                    <p class="has-text-weight-semibold mt-2">Xiaohongshu</p>
+                    <p class="has-text-weight-semibold" style="margin-top: 1rem;">Rednote</p>
                 </div>
                 {% endunless %}
                 
                 {% unless site.bilibili_uid == %}
-                <div class="column is-narrow">
+                <div class="column is-narrow" style="padding: 1rem;">
                     <a href="https://space.bilibili.com/{{site.bilibili_uid}}" 
                        target="_blank" 
                        class="button is-large is-white"
-                       title="Bilibili">
+                       title="Bilibili"
+                       style="width: 100px; height: 100px; border-radius: 12px;">
                         <span class="icon is-large has-text-info">
                             <i class="fas fa-tv fa-2x"></i>
                         </span>
                     </a>
-                    <p class="has-text-weight-semibold mt-2">Bilibili</p>
+                    <p class="has-text-weight-semibold" style="margin-top: 1rem;">Bilibili</p>
                 </div>
                 {% endunless %}
                 
                 {% unless site.email == %}
-                <div class="column is-narrow">
+                <div class="column is-narrow" style="padding: 1rem;">
                     <a href="mailto:{{site.email}}" 
                        target="_blank" 
                        class="button is-large is-white"
-                       title="Email">
+                       title="Email"
+                       style="width: 100px; height: 100px; border-radius: 12px;">
                         <span class="icon is-large has-text-grey-dark">
                             <i class="fas fa-envelope fa-2x"></i>
                         </span>
                     </a>
-                    <p class="has-text-weight-semibold mt-2">Email</p>
+                    <p class="has-text-weight-semibold" style="margin-top: 1rem;">Email</p>
                 </div>
                 {% endunless %}
             </div>
