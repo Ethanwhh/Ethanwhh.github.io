@@ -5,14 +5,14 @@
                 Contact Me
             </h1>
             <br><br>
-            <h2 class="subtitle is-4 has-text-grey" style="margin-bottom: 3rem;">
+            <h2 class="subtitle is-4 has-text-grey" style="margin-bottom: 3rem; padding: 0 1rem;">
                 Feel free to reach out through any of the following ways
             </h2>
             
             <!-- Email Contact Button -->
             {% unless site.email == %}
             <div class="columns is-centered" style="margin-bottom: 2rem;">
-                <div class="column is-half">
+                <div class="column is-half-tablet is-three-quarters-mobile">
                     <a href="mailto:{{site.email}}"
                         class="button is-large is-fullwidth is-rounded is-black is-outlined has-text-weight-semibold"
                         target="_blank"
@@ -33,9 +33,9 @@
                 Find Me On These Platforms
             </h3>
             
-            <div class="columns is-centered is-mobile is-multiline" style="gap: 1.5rem;">
+            <div class="columns is-centered is-mobile is-multiline" style="max-width: 600px; margin: 0 auto;">
                 {% unless site.github_username == %}
-                <div class="column is-narrow" style="padding: 1rem;">
+                <div class="column is-one-quarter-tablet is-half-mobile" style="display: flex; flex-direction: column; align-items: center;">
                     <a href="https://github.com/{{site.github_username}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -50,7 +50,7 @@
                 {% endunless %}
                 
                 {% unless site.xiaohongshu_username == %}
-                <div class="column is-narrow" style="padding: 1rem;">
+                <div class="column is-one-quarter-tablet is-half-mobile" style="display: flex; flex-direction: column; align-items: center;">
                     <a href="https://www.xiaohongshu.com/user/profile/{{site.xiaohongshu_username}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -65,7 +65,7 @@
                 {% endunless %}
                 
                 {% unless site.bilibili_uid == %}
-                <div class="column is-narrow" style="padding: 1rem;">
+                <div class="column is-one-quarter-tablet is-half-mobile" style="display: flex; flex-direction: column; align-items: center;">
                     <a href="https://space.bilibili.com/{{site.bilibili_uid}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -80,7 +80,7 @@
                 {% endunless %}
                 
                 {% unless site.email == %}
-                <div class="column is-narrow" style="padding: 1rem;">
+                <div class="column is-one-quarter-tablet is-half-mobile" style="display: flex; flex-direction: column; align-items: center;">
                     <a href="mailto:{{site.email}}" 
                        target="_blank" 
                        class="button is-large is-white"
