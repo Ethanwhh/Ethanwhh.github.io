@@ -2,18 +2,18 @@
 markdown: kramdown
 
 # URL of the Site
-url: ''
+url: 'https://ethanwhh.github.io' 
 # Base URL of the Site (i.e., Name of the Repository in which the Site is hosted)
 baseurl: 
 
 # Title of the Site
 title: Ethanwhh's Blog
 # Description of the Site
-description: Just do it & Nothing is everything
+description: Just do it! & Nothing is impossible!
 # URL of Image of the Site
-site-image: /assets/images/meta.jpg
+site-image: /assets/images/meta.png
 # Keywords of the Site
-site-keywords: Site, Template, Theme
+site-keywords: Blog, 技术博客, Ethanwhh, 个人网站
 # URL for the Image of custom Favicon
 favicon-url: 
 
@@ -29,9 +29,6 @@ bilibili_uid: 513196564
 
 # Google Analytics
 google-analytics: G-C34THPKYZN
-
-# Disqus
-disqus-shortname: thedevslot
 
 # Name of the Author
 author-name: Ethanwhh
