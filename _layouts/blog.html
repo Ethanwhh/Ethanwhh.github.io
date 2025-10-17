@@ -1,165 +1,123 @@
 ---
-layout: compress
+layout: default
 ---
 
-<!DOCTYPE html>
-<html>
-
-{% include head.html %}
-
-<body>
-    {% include navbar.html %}
-
-    <section class="hero is-fullheight" id="blog">
-        <div class="hero-body">
-            <div class="container">
-                {% include blogpage-heading.html %}
-            </div>
+<section class="hero is-fullheight" id="blog">
+    <div class="hero-body">
+        <div class="container">
+            {% include blogpage-heading.html %}
         </div>
-        
-        <!--搜索结果容器-->
-        <div id="results-container" style="display: none; padding: 0 2.5rem;">
-            <div id="search-results"></div>
-        </div>
-        
-        <!--原始博客文章列表-->
-        <div id="blog-posts-container">
-            {% for post in site.posts %}
-                {% include blog-card.html %}
-            {% endfor %}
-        </div>
-    </section>
-    <br>
-    <!--Footer begins here-->
-    {% include footer.html %}
+    </div>
     
-    <script>
-        // 直接在页面中嵌入所有文章数据
-        const posts = [
-            {% for post in site.posts %}
-            {
-                title: "{{ post.title | escape }}",
-                description: "{{ post.description | strip_newlines | strip_html | strip | escape }}",
-                tags: "{{ post.tags | join: ', ' }}",
-                url: "{{ site.url }}{{ site.baseurl }}{{ post.url }}",
-                date: "{{ post.date | date: '%B %-d, %Y' }}",
-                readtime: "{{ post.content | number_of_words | divided_by:180 }}",
-                image: "{{ post.post-image }}"
-            }{% unless forloop.last %},{% endunless %}
-            {% endfor %}
-        ];
+    <!--搜索结果容器-->
+    <div id="results-container" style="display: none; padding: 0 2.5rem;"></div>
+    
+    <!--原始博客文章列表-->
+    <div id="blog-posts-container">
+        {% for post in site.posts %}
+            {% include blog-card.html %}
+        {% endfor %}
+    </div>
+</section>
 
-        console.log('文章数据加载完成，共', posts.length, '篇文章');
-        console.log('文章列表:', posts);
+<script type="text/javascript">
+(function() {
+    'use strict';
+    
+    // 文章数据
+    var posts = [
+        {% for post in site.posts %}
+        {
+            title: {{ post.title | jsonify }},
+            description: {{ post.description | jsonify }},
+            tags: "{{ post.tags | join: ', ' }}",
+            url: "{{ site.baseurl }}{{ post.url }}",
+            date: "{{ post.date | date: '%B %-d, %Y' }}",
+            readtime: "{{ post.content | number_of_words | divided_by:180 }}",
+            image: "{{ post.post-image }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ];
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('search');
-            const searchButton = document.getElementById('search-button');
-            const blogPostsContainer = document.getElementById('blog-posts-container');
-            const resultsContainer = document.getElementById('results-container');
-            const searchResults = document.getElementById('search-results');
+    console.log('=== 搜索功能加载 ===');
+    console.log('文章数量:', posts.length);
 
-            console.log('DOM元素:', {
-                searchInput,
-                searchButton,
-                blogPostsContainer,
-                resultsContainer
+    function init() {
+        var searchInput = document.getElementById('search');
+        var searchButton = document.getElementById('search-button');
+        var blogPostsContainer = document.getElementById('blog-posts-container');
+        var resultsContainer = document.getElementById('results-container');
+
+        console.log('元素检查:', {
+            searchInput: !!searchInput,
+            searchButton: !!searchButton,
+            blogPostsContainer: !!blogPostsContainer,
+            resultsContainer: !!resultsContainer
+        });
+
+        if (!searchInput || !blogPostsContainer || !resultsContainer) {
+            console.error('关键元素缺失！');
+            return;
+        }
+
+        function performSearch(query) {
+            query = query.trim();
+            console.log('搜索:', query);
+
+            if (!query) {
+                blogPostsContainer.style.display = 'block';
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            var searchText = query.toLowerCase();
+            var results = posts.filter(function(post) {
+                return post.title.toLowerCase().indexOf(searchText) !== -1 ||
+                       post.description.toLowerCase().indexOf(searchText) !== -1 ||
+                       post.tags.toLowerCase().indexOf(searchText) !== -1;
             });
 
-            function performSearch(query) {
-                console.log('执行搜索，关键词:', query);
-                
-                if (!query || query.trim() === '') {
-                    // 清空搜索，显示所有文章
-                    blogPostsContainer.style.display = 'block';
-                    resultsContainer.style.display = 'none';
-                    return;
-                }
+            console.log('结果数:', results.length);
 
-                // 搜索逻辑
-                const results = posts.filter(post => {
-                    const searchText = query.toLowerCase();
-                    const titleMatch = post.title.toLowerCase().includes(searchText);
-                    const descMatch = post.description.toLowerCase().includes(searchText);
-                    const tagsMatch = post.tags.toLowerCase().includes(searchText);
-                    
-                    return titleMatch || descMatch || tagsMatch;
-                });
+            blogPostsContainer.style.display = 'none';
+            resultsContainer.style.display = 'block';
 
-                console.log('搜索结果数量:', results.length);
-                console.log('搜索结果:', results);
-
-                // 显示搜索结果
-                blogPostsContainer.style.display = 'none';
-                resultsContainer.style.display = 'block';
-
-                if (results.length === 0) {
-                    searchResults.innerHTML = `
-                        <div class="subtitle has-text-centered is-uppercase" style="padding: 2rem;">
-                            没有找到包含 "${query}" 的文章
-                        </div>
-                        <hr class="has-background-black" style="margin: 0.5rem 5rem 2.5rem 5rem">
-                    `;
-                } else {
-                    searchResults.innerHTML = results.map(post => `
-                        <div style="border: 0.15rem dashed black; margin-bottom: 1.5rem;" class="columns has-text-centered">
-                            <div class="column is-marginless is-paddingless is-one-third-desktop is-one-third-fullhd is-one-third-tablet">
-                                <div class="image is-16by9" style="background-image: url(${post.image});"></div>
-                            </div>
-                            <a href="${post.url}">
-                                <div class="column has-text-left-desktop has-text-left-tablet">
-                                    <h1 class="title is-size-4-touch">${post.title}</h1>
-                                    <div class="content has-text-grey">
-                                        ${post.description}
-                                        <hr class="has-background-grey">
-                                        <span class="has-text-grey">Published on <span class="has-text-weight-semibold">${post.date}</span></span> | 
-                                        <i class="fas fa-clock"></i> <span class="has-text-weight-semibold">${post.readtime} min</span> read
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    `).join('');
-                }
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="subtitle has-text-centered" style="padding:2rem">没有找到相关文章</div>';
+            } else {
+                resultsContainer.innerHTML = results.map(function(post) {
+                    return '<div class="columns has-text-centered" style="border:0.15rem dashed black;margin-bottom:1.5rem">' +
+                        '<div class="column is-one-third"><div class="image is-16by9" style="background-image:url(' + post.image + ')"></div></div>' +
+                        '<a href="' + post.url + '"><div class="column has-text-left">' +
+                        '<h1 class="title is-size-4-touch">' + post.title + '</h1>' +
+                        '<div class="content has-text-grey">' + post.description +
+                        '<hr><span>Published on <b>' + post.date + '</b></span> | <i class="fas fa-clock"></i> <b>' + post.readtime + ' min</b> read</div>' +
+                        '</div></a></div>';
+                }).join('');
             }
+        }
 
-            // 监听输入事件
-            if (searchInput) {
-                searchInput.addEventListener('input', function() {
-                    const query = this.value.trim();
-                    console.log('输入变化:', query);
-                    performSearch(query);
-                });
-
-                // 回车搜索
-                searchInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        console.log('按下回车');
-                        performSearch(this.value.trim());
-                    }
-                });
-
-                // ESC清空
-                searchInput.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape') {
-                        console.log('按下ESC');
-                        this.value = '';
-                        performSearch('');
-                    }
-                });
-            }
-
-            // 搜索按钮点击
-            if (searchButton) {
-                searchButton.addEventListener('click', function() {
-                    console.log('点击搜索按钮');
-                    const query = searchInput.value.trim();
-                    performSearch(query);
-                });
-            }
-
-            console.log('搜索功能初始化完成');
+        searchInput.addEventListener('input', function() {
+            performSearch(this.value);
         });
-    </script>
-</body>
 
-</html>
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') performSearch(this.value);
+        });
+
+        if (searchButton) {
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+        }
+
+        console.log('✅ 搜索功能已激活');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
