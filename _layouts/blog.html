@@ -18,9 +18,9 @@ layout: compress
         </div>
         
         <!--搜索结果容器-->
-        <div id="results-container"></div>
+        <div id="results-container" style="display: none;"></div>
         
-        <!--Blog Cards Section-->
+        <!--原始博客文章列表-->
         <div id="blog-posts-container">
             {% for post in site.posts %}
                 {% include blog-card.html %}
@@ -30,6 +30,7 @@ layout: compress
     <br>
     <!--Footer begins here-->
     {% include footer.html %}
+    
     <script src="{{site.url}}{{site.baseurl}}/assets/js/simple-jekyll-search.js"></script>
 
     <script>
@@ -47,16 +48,21 @@ layout: compress
         const blogPostsContainer = document.getElementById('blog-posts-container');
         const resultsContainer = document.getElementById('results-container');
         
-        searchInput.addEventListener('input', function() {
-            if (this.value.trim() !== '') {
-                // 有搜索内容时,隐藏原始文章列表
-                blogPostsContainer.style.display = 'none';
-            } else {
-                // 搜索框为空时,显示原始文章列表,隐藏搜索结果
-                blogPostsContainer.style.display = 'block';
-                resultsContainer.innerHTML = '';
-            }
-        });
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const searchValue = this.value.trim();
+                
+                if (searchValue !== '') {
+                    // 有搜索内容时,显示搜索结果,隐藏原始文章列表
+                    blogPostsContainer.style.display = 'none';
+                    resultsContainer.style.display = 'block';
+                } else {
+                    // 搜索框为空时,显示原始文章列表,隐藏搜索结果
+                    blogPostsContainer.style.display = 'block';
+                    resultsContainer.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 
