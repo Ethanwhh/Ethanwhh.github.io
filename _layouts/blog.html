@@ -34,65 +34,91 @@ layout: compress
     <script src="{{site.url}}{{site.baseurl}}/assets/js/simple-jekyll-search.js"></script>
 
     <script>
-        // 初始化搜索
-        var sjs = SimpleJekyllSearch({
-            searchInput: document.getElementById('search'),
-            resultsContainer: document.getElementById('results-container'),
-            json: '{{site.url}}{{site.baseurl}}/search.json',
-            searchResultTemplate: '<div style="border: 0.15rem dashed black; margin-bottom: 1.5rem;" class="columns has-text-centered" id="blog-card"><div class="column is-marginless is-paddingless is-one-third-desktop is-one-third-fullhd is-one-third-tablet"><div class="image is-16by9" style="background-image: url({image});"></div></div><a href="{url}"><div class="column has-text-left-desktop has-text-left-tablet"><h1 class="title is-size-4-touch">{title}</h1><div class="content has-text-grey">{description}<hr class="has-background-grey"><span class="has-text-grey">Published on <span class="has-text-weight-semibold">{date}</span></span> | <i class="fas fa-clock"></i> <span class="has-text-weight-semibold">{readtime} min</span> read</div></div></a></div>',
-            noResultsText: '<div class="subtitle has-text-centered is-uppercase" style="padding: 2rem;">No Results Found</div><hr class="has-background-black" style="margin: 0.5rem 5rem 2.5rem 5rem">',
-            fuzzy: false,
-            limit: 999
-        });
-
-        var searchInput = document.getElementById('search');
-        var searchButton = document.getElementById('search-button');
-        var blogPostsContainer = document.getElementById('blog-posts-container');
-        var resultsContainer = document.getElementById('results-container');
-
-        function performSearch() {
-            var searchValue = searchInput.value.trim();
-            console.log('搜索关键词:', searchValue); // 调试用
+        console.log('脚本开始执行');
+        
+        // 等待DOM完全加载
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM加载完成');
             
-            if (searchValue !== '') {
-                blogPostsContainer.style.display = 'none';
-                resultsContainer.style.display = 'block';
-            } else {
-                blogPostsContainer.style.display = 'block';
-                resultsContainer.style.display = 'none';
+            var searchInput = document.getElementById('search');
+            var searchButton = document.getElementById('search-button');
+            var blogPostsContainer = document.getElementById('blog-posts-container');
+            var resultsContainer = document.getElementById('results-container');
+            
+            console.log('搜索输入框:', searchInput);
+            console.log('搜索按钮:', searchButton);
+            console.log('博客容器:', blogPostsContainer);
+            console.log('结果容器:', resultsContainer);
+
+            if (!searchInput) {
+                console.error('找不到搜索输入框!');
+                return;
             }
-        }
 
-        // 监听输入事件
-        if (searchInput) {
-            searchInput.addEventListener('input', performSearch);
-            
+            // 初始化 Simple Jekyll Search
+            var sjs = SimpleJekyllSearch({
+                searchInput: searchInput,
+                resultsContainer: resultsContainer,
+                json: '{{site.url}}{{site.baseurl}}/search.json',
+                searchResultTemplate: '<div style="border: 0.15rem dashed black; margin-bottom: 1.5rem;" class="columns has-text-centered"><div class="column is-marginless is-paddingless is-one-third-desktop is-one-third-fullhd is-one-third-tablet"><div class="image is-16by9" style="background-image: url({image});"></div></div><a href="{url}"><div class="column has-text-left-desktop has-text-left-tablet"><h1 class="title is-size-4-touch">{title}</h1><div class="content has-text-grey">{description}<hr class="has-background-grey"><span class="has-text-grey">Published on <span class="has-text-weight-semibold">{date}</span></span> | <i class="fas fa-clock"></i> <span class="has-text-weight-semibold">{readtime} min</span> read</div></div></a></div>',
+                noResultsText: '<div class="subtitle has-text-centered is-uppercase" style="padding: 2rem;">No Results Found</div><hr class="has-background-black" style="margin: 0.5rem 5rem 2.5rem 5rem">',
+                fuzzy: false,
+                limit: 999,
+                success: function() {
+                    console.log('搜索JSON加载成功');
+                }
+            });
+
+            console.log('SimpleJekyllSearch初始化完成:', sjs);
+
+            function toggleContainers(showResults) {
+                console.log('切换显示状态:', showResults ? '显示结果' : '显示所有博客');
+                if (showResults) {
+                    blogPostsContainer.style.display = 'none';
+                    resultsContainer.style.display = 'block';
+                } else {
+                    blogPostsContainer.style.display = 'block';
+                    resultsContainer.style.display = 'none';
+                }
+            }
+
+            // 监听输入事件
+            searchInput.addEventListener('input', function() {
+                var value = this.value.trim();
+                console.log('输入内容:', value);
+                toggleContainers(value !== '');
+            });
+
             // 监听回车键
             searchInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
-                    performSearch();
+                    console.log('按下回车键');
+                    var value = this.value.trim();
+                    toggleContainers(value !== '');
                 }
             });
 
-            // 监听ESC键清空搜索
+            // 监听ESC键
             searchInput.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
+                    console.log('按下ESC键');
                     this.value = '';
-                    performSearch();
+                    toggleContainers(false);
                 }
             });
-        }
 
-        // 搜索按钮点击事件
-        if (searchButton) {
-            searchButton.addEventListener('click', performSearch);
-        }
+            // 搜索按钮点击
+            if (searchButton) {
+                searchButton.addEventListener('click', function() {
+                    console.log('点击搜索按钮');
+                    var value = searchInput.value.trim();
+                    console.log('当前搜索值:', value);
+                    toggleContainers(value !== '');
+                });
+            }
 
-        // 页面加载完成后检查
-        window.addEventListener('load', function() {
-            console.log('搜索功能已加载');
-            console.log('搜索输入框:', searchInput);
-            console.log('搜索按钮:', searchButton);
+            // 测试搜索功能
+            console.log('所有事件监听器已添加');
         });
     </script>
 </body>
