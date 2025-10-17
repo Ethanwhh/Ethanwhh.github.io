@@ -6,9 +6,9 @@
     <!--Footer Main Section-->
     <div class="has-background-grey-darker" style="padding: 2rem 1.5rem;">
         <div class="container">
-            <div class="columns is-multiline is-centered is-vcentered">
+            <div class="columns is-multiline is-centered is-vcentered" style="margin-left: 0; margin-right: 0;">
                 <!--Name Section-->
-                <div class="column is-12-mobile is-one-third-tablet is-one-third-desktop has-text-centered" style="margin-bottom: 1.5rem;">
+                <div class="column is-12-mobile is-4-tablet is-4-desktop has-text-centered" style="margin-bottom: 1.5rem;">
                     <a href="{{site.url}}{{site.baseurl}}/#about">
                         <figure class="image is-64x64" style="margin: 0 auto 0.5rem auto;">
                             <img class="is-rounded" src="{{site.author-image}}">
@@ -21,7 +21,7 @@
                 </div>
 
                 <!--Link Section-->
-                <div class="column is-12-mobile is-one-third-tablet is-one-third-desktop has-text-white has-text-centered" style="margin-bottom: 1.5rem;">
+                <div class="column is-12-mobile is-4-tablet is-4-desktop has-text-white has-text-centered" style="margin-bottom: 1.5rem;">
                     <h3 style="margin-bottom: 1rem;">More Links</h3>
                     {% for sitepage in site.html_pages offset: 4 %}
                     {% unless sitepage.url == '/'  limit: 2 %}
@@ -36,7 +36,7 @@
                 </div>
 
                 <!--Blog-post Section-->
-                <div class="column is-12-mobile is-one-third-tablet is-one-third-desktop has-text-white has-text-centered" style="margin-bottom: 1.5rem;">
+                <div class="column is-12-mobile is-4-tablet is-4-desktop has-text-white has-text-centered" style="margin-bottom: 1.5rem;">
                     <h3 style="margin-bottom: 1rem;">Recent Posts</h3>
                     {% for post in site.posts offset: 0 limit:3 %}
                     <li style="list-style: none; margin-left: 0; padding-left: 0; margin-bottom: 0.5rem;">
