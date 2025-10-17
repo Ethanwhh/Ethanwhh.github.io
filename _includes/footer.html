@@ -23,15 +23,11 @@
                 <!--Link Section-->
                 <div class="column is-one-third has-text-white has-text-centered">
                     <h3 style="margin-bottom: 1rem;">More Links</h3>
-                    {% for sitepage in site.html_pages offset: 4 %}
-                    {% unless sitepage.url == '/'  limit: 2 %}
                     <li style="list-style: none; margin-left: 0; padding-left: 0; margin-bottom: 0.5rem;">
-                        <a href="{{sitepage.url | absolute_url}}">{{sitepage.title}}</a>
+                        <a target="_blank" href="https://blog.csdn.net/m0_73672030">CSDN</a>
                     </li>
-                    {% endunless %}
-                    {% endfor %}
                     <li style="list-style: none; margin-left: 0; padding-left: 0; margin-bottom: 0.5rem;">
-                        <a target="_blank" href="{{site.url}}{{site.baseurl}}/feed.xml">Subscribe via RSS</a>
+                        <a target="_blank" href="https://datawhale.cn/">Datawhale</a>
                     </li>
                 </div>
 
