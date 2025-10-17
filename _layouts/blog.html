@@ -14,69 +14,52 @@ layout: compress
         <div class="hero-body">
             <div class="container">
                 {% include blogpage-heading.html %}
+                
+                <div class="columns is-variable is-9">
+                    <div class="column is-8 is-12-mobile">
+                        <!-- 搜索结果容器 -->
+                        <div id="results-container" style="display: none; padding: 0 2.5rem;"></div>
+                        
+                        <!-- 博客列表容器 -->
+                        <div id="blog-posts-container">
+                            {% for post in site.posts %}
+                                {% include blog-card.html %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- 在 section 外面添加博客列表区域 -->
-    <div class="section">
-        <div class="container">
-            <!--搜索结果容器-->
-            <div id="results-container" style="display: none;"></div>
-            
-            <!--原始博客文章列表-->
-            <div id="blog-posts-container">
-                {% for post in site.posts %}
-                    {% include blog-card.html %}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    
-    <br>
+
     <!--Footer begins here-->
     {% include footer.html %}
     
     <script src="{{site.url}}{{site.baseurl}}/assets/js/simple-jekyll-search.js"></script>
 
     <script>
-        // 确保 DOM 完全加载后再初始化搜索
         (function() {
             function initSearch() {
                 const searchInput = document.getElementById('search');
                 const blogPostsContainer = document.getElementById('blog-posts-container');
                 const resultsContainer = document.getElementById('results-container');
                 
-                // 检查必要元素是否存在
-                if (!searchInput) {
-                    console.error('Search input not found');
+                if (!searchInput || !blogPostsContainer || !resultsContainer) {
+                    console.error('Required elements not found');
                     return;
                 }
                 
-                if (!blogPostsContainer || !resultsContainer) {
-                    console.error('Containers not found');
-                    return;
-                }
-                
-                // 初始化 SimpleJekyllSearch
                 SimpleJekyllSearch({
                     searchInput: searchInput,
                     resultsContainer: resultsContainer,
                     json: '{{site.url}}{{site.baseurl}}/search.json',
                     searchResultTemplate: '<div class="columns has-text-centered" id="blog-card"><div class="column is-marginless is-paddingless is-one-third-desktop is-one-third-fullhd is-one-third-tablet"><div class="image is-16by9" style="background-image: url({image}); background-size: cover; background-position: center;"></div></div><a href="{url}"><div class="column has-text-left-desktop has-text-left-tablet"><h1 class="title is-size-4-touch">{title}</h1><div class="content has-text-grey">{description}<hr class="has-background-grey"><span class="has-text-grey">Published on <span class="has-text-weight-semibold">{date}</span></span> | <i class="fas fa-clock"></i> <span class="has-text-weight-semibold">{readtime} min</span> read</div></div></a></div>',
-                    noResultsText: '<div class="subtitle has-text-centered is-uppercase" style="padding: 3rem 0;">No Results Found</div>',
-                    fuzzy: false,
-                    limit: 10,
-                    exclude: []
+                    noResultsText: '<div class="subtitle has-text-centered is-uppercase">No Results Found</div>',
+                    fuzzy: false
                 });
                 
-                console.log('Search initialized successfully');
-                
-                // 监听搜索输入变化
                 searchInput.addEventListener('input', function() {
-                    const searchValue = this.value.trim();
-                    
-                    if (searchValue !== '') {
+                    if (this.value.trim() !== '') {
                         blogPostsContainer.style.display = 'none';
                         resultsContainer.style.display = 'block';
                     } else {
@@ -84,18 +67,8 @@ layout: compress
                         resultsContainer.style.display = 'none';
                     }
                 });
-                
-                // 按 ESC 键清空搜索
-                searchInput.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape') {
-                        this.value = '';
-                        blogPostsContainer.style.display = 'block';
-                        resultsContainer.style.display = 'none';
-                    }
-                });
             }
             
-            // 等待 DOM 完全加载
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initSearch);
             } else {
