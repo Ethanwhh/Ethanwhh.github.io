@@ -34,43 +34,68 @@ layout: compress
     <script src="{{site.url}}{{site.baseurl}}/assets/js/simple-jekyll-search.js"></script>
 
     <script>
-        window.simpleJekyllSearch = SimpleJekyllSearch({
-            searchInput: document.getElementById('search'),
-            resultsContainer: document.getElementById('results-container'),
-            json: '{{site.url}}{{site.baseurl}}/search.json',
-            searchResultTemplate: '<div style="border: 0.15rem dashed black" class="searchResult columns has-text-centered" id="blog-card"><div class="column is-marginless is-paddingless is-one-third-desktop is-one-third-fullhd is-one-third-tablet"><div class="image is-16by9" style="background-image: url({image});"></div></div><a href="{url}"><div class="column has-text-left-desktop has-text-left-tablet"><h1 class="title is-size-4-touch">{title}</h1><div class="content has-text-grey">{content}<hr class="has-background-grey"><span class="has-text-grey">Published on <span class="has-text-weight-semibold">{date}</span></span> | <i class="fas fa-clock"></i> <span class="has-text-weight-semibold">{readtime} min</span> read</div></div></a></div>',
-            noResultsText: '<div class="subtitle has-text-centered is-uppercase">No Results Found</div><hr class="has-background-black" style="margin: 0.5rem 5rem 2.5rem 5rem">',
-            fuzzy: true,
-        });
-        
-        // 添加搜索交互逻辑
-        const searchInput = document.getElementById('search');
-        const blogPostsContainer = document.getElementById('blog-posts-container');
-        const resultsContainer = document.getElementById('results-container');
-        
-        if (searchInput) {
-            searchInput.addEventListener('input', function() {
-                const searchValue = this.value.trim();
+        // 确保 DOM 完全加载后再初始化搜索
+        (function() {
+            function initSearch() {
+                const searchInput = document.getElementById('search');
+                const blogPostsContainer = document.getElementById('blog-posts-container');
+                const resultsContainer = document.getElementById('results-container');
                 
-                if (searchValue !== '') {
-                    // 有搜索内容时,显示搜索结果,隐藏原始文章列表
-                    blogPostsContainer.style.display = 'none';
-                    resultsContainer.style.display = 'block';
-                } else {
-                    // 搜索框为空时,显示原始文章列表,隐藏搜索结果
-                    blogPostsContainer.style.display = 'block';
-                    resultsContainer.style.display = 'none';
+                // 检查必要元素是否存在
+                if (!searchInput) {
+                    console.error('Search input not found');
+                    return;
                 }
-            });
+                
+                if (!blogPostsContainer || !resultsContainer) {
+                    console.error('Containers not found');
+                    return;
+                }
+                
+                // 初始化 SimpleJekyllSearch
+                window.simpleJekyllSearch = SimpleJekyllSearch({
+                    searchInput: searchInput,
+                    resultsContainer: resultsContainer,
+                    json: '{{site.url}}{{site.baseurl}}/search.json',
+                    searchResultTemplate: '<div style="border: 0.15rem dashed black; margin-bottom: 1.5rem;" class="searchResult columns has-text-centered" id="blog-card"><div class="column is-marginless is-paddingless is-one-third-desktop is-one-third-fullhd is-one-third-tablet"><div class="image is-16by9" style="background-image: url({image});"></div></div><a href="{url}"><div class="column has-text-left-desktop has-text-left-tablet"><h1 class="title is-size-4-touch">{title}</h1><div class="content has-text-grey">{description}<hr class="has-background-grey"><span class="has-text-grey">Published on <span class="has-text-weight-semibold">{date}</span></span> | <i class="fas fa-clock"></i> <span class="has-text-weight-semibold">{readtime} min</span> read</div></div></a></div>',
+                    noResultsText: '<div class="subtitle has-text-centered is-uppercase" style="padding: 3rem 0;">No Results Found</div><hr class="has-background-black" style="margin: 0.5rem 5rem 2.5rem 5rem">',
+                    fuzzy: true,
+                    exclude: []
+                });
+                
+                console.log('Search initialized successfully');
+                
+                // 监听搜索输入变化
+                searchInput.addEventListener('input', function() {
+                    const searchValue = this.value.trim();
+                    
+                    if (searchValue !== '') {
+                        // 有搜索内容:隐藏原文章列表,显示搜索结果
+                        blogPostsContainer.style.display = 'none';
+                        resultsContainer.style.display = 'block';
+                    } else {
+                        // 搜索框为空:显示原文章列表,隐藏搜索结果
+                        blogPostsContainer.style.display = 'block';
+                        resultsContainer.style.display = 'none';
+                    }
+                });
+                
+                // 按 ESC 键清空搜索
+                searchInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        this.value = '';
+                        this.dispatchEvent(new Event('input'));
+                    }
+                });
+            }
             
-            // 添加清空搜索的功能
-            searchInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    this.value = '';
-                    this.dispatchEvent(new Event('input'));
-                }
-            });
-        }
+            // 等待 DOM 完全加载
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initSearch);
+            } else {
+                initSearch();
+            }
+        })();
     </script>
 </body>
 
