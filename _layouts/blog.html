@@ -57,7 +57,7 @@ layout: compress
                     searchInput: searchInput,
                     resultsContainer: resultsContainer,
                     json: '{{site.url}}{{site.baseurl}}/search.json',
-                    searchResultTemplate: '<div class="columns has-text-centered" style="border: 0.15rem dashed #dbdbdb; margin-bottom: 1.5rem; padding: 1rem;"><div class="column is-marginless is-paddingless is-one-third-desktop is-one-third-fullhd is-one-third-tablet"><div class="image is-16by9" style="background-image: url({image}); background-size: cover; background-position: center;"></div></div><div class="column has-text-left-desktop has-text-left-tablet"><h1 class="title is-size-4-touch"><a href="{url}" style="color: inherit; text-decoration: none;">{title}</a></h1><div class="content has-text-grey">{description}<hr class="has-background-grey"><span class="has-text-grey">Published on <span class="has-text-weight-semibold">{date}</span></span> | <i class="fas fa-clock"></i> <span class="has-text-weight-semibold">{readtime} min</span> read</div></div></div>',
+                    searchResultTemplate: '<div class="columns has-text-centered" id="blog-card"><div class="column is-marginless is-paddingless is-one-third-desktop is-one-third-fullhd is-one-third-tablet"><div class="image is-16by9" style="background-image: url({image}); background-size: cover; background-position: center;"></div></div><a href="{url}"><div class="column has-text-left-desktop has-text-left-tablet"><h1 class="title is-size-4-touch">{title}</h1><div class="content has-text-grey">{description}<hr class="has-background-grey"><span class="has-text-grey">Published on <span class="has-text-weight-semibold">{date}</span></span> | <i class="fas fa-clock"></i> <span class="has-text-weight-semibold">{readtime} min</span> read</div></div></a></div>',
                     noResultsText: '<div class="subtitle has-text-centered is-uppercase" style="padding: 3rem 0;">No Results Found</div>',
                     fuzzy: false,
                     limit: 10,
@@ -66,17 +66,14 @@ layout: compress
                 
                 console.log('Search initialized successfully');
                 
-                // 监听搜索输入变化 - 关键修复
-                searchInput.addEventListener('keyup', function() {
+                // 监听搜索输入变化
+                searchInput.addEventListener('input', function() {
                     const searchValue = this.value.trim();
                     
                     if (searchValue !== '') {
-                        // 有搜索内容:隐藏原文章列表,显示搜索结果
                         blogPostsContainer.style.display = 'none';
                         resultsContainer.style.display = 'block';
-                        // SimpleJekyllSearch 会自动处理搜索并填充结果
                     } else {
-                        // 搜索框为空:显示原文章列表,隐藏搜索结果
                         blogPostsContainer.style.display = 'block';
                         resultsContainer.style.display = 'none';
                     }
