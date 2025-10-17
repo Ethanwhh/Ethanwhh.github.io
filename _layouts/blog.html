@@ -16,17 +16,23 @@ layout: compress
                 {% include blogpage-heading.html %}
             </div>
         </div>
-        
-        <!--搜索结果容器-->
-        <div id="results-container" style="display: none; padding: 0 2.5rem;"></div>
-        
-        <!--原始博客文章列表-->
-        <div id="blog-posts-container">
-            {% for post in site.posts %}
-                {% include blog-card.html %}
-            {% endfor %}
-        </div>
     </section>
+    
+    <!-- 在 section 外面添加博客列表区域 -->
+    <div class="section">
+        <div class="container">
+            <!--搜索结果容器-->
+            <div id="results-container" style="display: none;"></div>
+            
+            <!--原始博客文章列表-->
+            <div id="blog-posts-container">
+                {% for post in site.posts %}
+                    {% include blog-card.html %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
     <br>
     <!--Footer begins here-->
     {% include footer.html %}
