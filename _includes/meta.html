@@ -11,12 +11,20 @@
 <meta property="og:title" content="{{site.title}}{% if page.title %} | {{page.title}}{% endif %}">
 <meta property="og:description" content="{% unless page.layout == 'post' %}{{site.description}}{% else %}{{page.description}}{% endunless %}">
 <meta property="og:image" content="{{site.url}}{{site.baseurl}}{% unless page.layout == 'post' %}{{site.site-image}}{% else %}{{page.post-image}}{% endunless %}">
-<meta property="og:image:width" content="300">
-<meta property="og:image:height" content="300">
+<meta property="og:image:secure_url" content="{{site.url}}{{site.baseurl}}{% unless page.layout == 'post' %}{{site.site-image}}{% else %}{{page.post-image}}{% endunless %}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="600">
 <meta property="og:url" content="{{site.url}}{{site.baseurl}}{{page.url}}">
 <meta property="og:site_name" content="{{site.title}}">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
 <meta property="og:locale" content="zh_CN">
+
+<!-- 添加 Twitter Card 标签（有些平台会fallback到这个） -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{site.title}}{% if page.title %} | {{page.title}}{% endif %}">
+<meta name="twitter:description" content="{% unless page.layout == 'post' %}{{site.description}}{% else %}{{page.description}}{% endunless %}">
+<meta name="twitter:image" content="{{site.url}}{{site.baseurl}}{% unless page.layout == 'post' %}{{site.site-image}}{% else %}{{page.post-image}}{% endunless %}">
 
 
 <!-- Search Engine 搜索引擎优化 -->
