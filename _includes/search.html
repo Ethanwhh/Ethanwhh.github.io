@@ -1,24 +1,14 @@
 <div class="field has-addons has-text-weight-medium has-text-grey">
-    <p class="control">
+    <p class="control is-expanded">
         <input id="search" 
                class="input is-shadowless is-uppercase has-text-grey has-text-weight-normal" 
                type="text"
-               placeholder="Search Here" 
+               placeholder="Search by title, description or tags" 
                autocomplete="off">
     </p>
     <p class="control">
-        <button class="button" onclick="focusSearch()" title="Focus search">
+        <button class="button is-static" title="Search">
             <i class="fas fa-search has-text-grey"></i>
         </button>
     </p>
 </div>
-
-<script>
-    // 聚焦到搜索框
-    function focusSearch() {
-        const searchInput = document.getElementById('search');
-        if (searchInput) {
-            searchInput.focus();
-        }
-    }
-</script>
