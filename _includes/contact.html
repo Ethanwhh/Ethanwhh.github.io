@@ -33,9 +33,10 @@
                 Find Me On These Platforms
             </h3>
             
-            <div class="columns is-centered is-multiline is-mobile" style="margin: 0 auto; max-width: 900px;">
+            <!-- 使用自定义网格布局 -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 900px; margin: 0 auto; padding: 0 1rem;">
                 {% unless site.github_username == %}
-                <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop" style="padding: 1rem; display: flex; flex-direction: column; align-items: center;">
+                <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
                     <a href="https://github.com/{{site.github_username}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -50,7 +51,7 @@
                 {% endunless %}
                 
                 {% unless site.xiaohongshu_username == %}
-                <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop" style="padding: 1rem; display: flex; flex-direction: column; align-items: center;">
+                <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
                     <a href="https://www.xiaohongshu.com/user/profile/{{site.xiaohongshu_username}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -65,7 +66,7 @@
                 {% endunless %}
                 
                 {% unless site.bilibili_uid == %}
-                <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop" style="padding: 1rem; display: flex; flex-direction: column; align-items: center;">
+                <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
                     <a href="https://space.bilibili.com/{{site.bilibili_uid}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -80,7 +81,7 @@
                 {% endunless %}
                 
                 {% unless site.email == %}
-                <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop" style="padding: 1rem; display: flex; flex-direction: column; align-items: center;">
+                <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
                     <a href="mailto:{{site.email}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -94,6 +95,14 @@
                 </div>
                 {% endunless %}
             </div>
+            
+            <style>
+                @media screen and (min-width: 769px) {
+                    #contact .social-icon-item {
+                        flex: 0 0 calc(25% - 1.5rem) !important;
+                    }
+                }
+            </style>
         </div>
     </div>
 </section>
