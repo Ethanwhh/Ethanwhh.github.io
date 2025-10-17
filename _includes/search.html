@@ -1,30 +1,21 @@
 <div class="field has-addons has-text-weight-medium has-text-grey">
     <p class="control">
         <input id="search" class="input is-shadowless is-uppercase has-text-grey has-text-weight-normal" type="text"
-            placeholder="Search Here" onkeypress="handleSearchKeyPress(event)">
+            placeholder="Search Here" autocomplete="off">
     </p>
     <p class="control">
-        <button class="button" onclick="triggerSearch()">
+        <button class="button" onclick="focusSearch()" title="Focus search">
             <i class="fas fa-search has-text-grey"></i>
         </button>
     </p>
 </div>
 
 <script>
-    // 按钮点击时触发搜索
-    function triggerSearch() {
+    // 聚焦到搜索框
+    function focusSearch() {
         const searchInput = document.getElementById('search');
-        searchInput.focus(); // 聚焦到搜索框
-        // 触发 input 事件,让 SimpleJekyllSearch 执行搜索
-        const event = new Event('input', { bubbles: true });
-        searchInput.dispatchEvent(event);
-    }
-    
-    // 按 Enter 键时触发搜索
-    function handleSearchKeyPress(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            triggerSearch();
+        if (searchInput) {
+            searchInput.focus();
         }
     }
 </script>

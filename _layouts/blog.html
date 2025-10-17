@@ -18,7 +18,7 @@ layout: compress
         </div>
         
         <!--搜索结果容器-->
-        <div id="results-container" style="display: none;"></div>
+        <div id="results-container" style="display: none; padding: 0 2.5rem;"></div>
         
         <!--原始博客文章列表-->
         <div id="blog-posts-container">
@@ -34,7 +34,7 @@ layout: compress
     <script src="{{site.url}}{{site.baseurl}}/assets/js/simple-jekyll-search.js"></script>
 
     <script>
-        SimpleJekyllSearch({
+        window.simpleJekyllSearch = SimpleJekyllSearch({
             searchInput: document.getElementById('search'),
             resultsContainer: document.getElementById('results-container'),
             json: '{{site.url}}{{site.baseurl}}/search.json',
@@ -60,6 +60,14 @@ layout: compress
                     // 搜索框为空时,显示原始文章列表,隐藏搜索结果
                     blogPostsContainer.style.display = 'block';
                     resultsContainer.style.display = 'none';
+                }
+            });
+            
+            // 添加清空搜索的功能
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    this.value = '';
+                    this.dispatchEvent(new Event('input'));
                 }
             });
         }
