@@ -1,22 +1,22 @@
 <section class="hero is-fullheight has-text-centered" id="contact">
     <div class="hero-body">
         <div class="container">
-            <h1 class="title is-1 is-uppercase has-text-weight-bold has-text-black" style="margin-bottom: 2rem;">
+            <h1 class="title is-1 is-uppercase has-text-weight-bold has-text-black" style="margin-bottom: 2rem; margin-left: 0; margin-right: 0;">
                 Contact Me
             </h1>
             <br><br>
-            <h2 class="subtitle is-4 has-text-grey" style="margin-bottom: 3rem;">
+            <h2 class="subtitle is-4 has-text-grey" style="margin-bottom: 3rem; padding-left: 1rem; padding-right: 1rem;">
                 Feel free to reach out through any of the following ways
             </h2>
             
             <!-- Email Contact Button -->
             {% unless site.email == %}
             <div class="columns is-centered" style="margin-bottom: 2rem;">
-                <div class="column is-half">
+                <div class="column is-half-desktop is-three-quarters-tablet is-full-mobile" style="padding-left: 1rem; padding-right: 1rem;">
                     <a href="mailto:{{site.email}}"
                         class="button is-large is-fullwidth is-rounded is-black is-outlined has-text-weight-semibold"
                         target="_blank"
-                        style="padding: 1.5rem 2rem;">
+                        style="padding: 1.5rem 1rem;">
                         <span class="icon is-medium" style="margin-right: 0.75rem;">
                             <i class="fas fa-envelope"></i>
                         </span>
@@ -29,13 +29,13 @@
             <hr style="margin: 3rem auto; width: 80%; max-width: 600px;">
             
             <!-- Social Media Icons Section -->
-            <h3 class="title is-4 has-text-weight-semibold has-text-black" style="margin-bottom: 2.5rem; margin-top: 2rem;">
+            <h3 class="title is-4 has-text-weight-semibold has-text-black" style="margin-bottom: 2.5rem; margin-top: 2rem; margin-left: 0; margin-right: 0;">
                 Find Me On These Platforms
             </h3>
             
-            <div class="columns is-centered is-mobile is-multiline" style="gap: 1.5rem;">
+            <div class="columns is-centered is-mobile is-multiline" style="margin-left: 0; margin-right: 0;">
                 {% unless site.github_username == %}
-                <div class="column is-narrow" style="padding: 1rem;">
+                <div class="column is-narrow" style="padding: 1rem; display: flex; flex-direction: column; align-items: center;">
                     <a href="https://github.com/{{site.github_username}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -50,7 +50,7 @@
                 {% endunless %}
                 
                 {% unless site.xiaohongshu_username == %}
-                <div class="column is-narrow" style="padding: 1rem;">
+                <div class="column is-narrow" style="padding: 1rem; display: flex; flex-direction: column; align-items: center;">
                     <a href="https://www.xiaohongshu.com/user/profile/{{site.xiaohongshu_username}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -65,7 +65,7 @@
                 {% endunless %}
                 
                 {% unless site.bilibili_uid == %}
-                <div class="column is-narrow" style="padding: 1rem;">
+                <div class="column is-narrow" style="padding: 1rem; display: flex; flex-direction: column; align-items: center;">
                     <a href="https://space.bilibili.com/{{site.bilibili_uid}}" 
                        target="_blank" 
                        class="button is-large is-white"
@@ -80,7 +80,7 @@
                 {% endunless %}
                 
                 {% unless site.email == %}
-                <div class="column is-narrow" style="padding: 1rem;">
+                <div class="column is-narrow" style="padding: 1rem; display: flex; flex-direction: column; align-items: center;">
                     <a href="mailto:{{site.email}}" 
                        target="_blank" 
                        class="button is-large is-white"
