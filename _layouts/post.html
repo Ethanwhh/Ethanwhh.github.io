@@ -25,7 +25,7 @@ layout: compress
               <img src="{{page.post-image}}" alt="{{post.title}}" id="post-image">
             </figure>
           </div>
-          <div class="subtitle column is-7 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-center-mobile">
+          <div class="subtitle column is-7 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-center-mobile" style="padding-right: 1.5rem;">
             {% unless page.description.size == 0 %}
             <p id="description" class="content is-size-5 has-text-weight-medium">{{page.description | strip | strip_html | strip_newlines }}</p>
             {% endunless %}
@@ -52,12 +52,8 @@ layout: compress
             {%- endunless -%}
           </div>
         </div>
-        <div class="columns is-variable is-5">
-          <div class="column is-12 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-left-mobile">
-            <div class="content">
-              {{ content }}
-            </div>
-          </div>
+        <div class="content has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-left-mobile" style="margin-top: 2rem;">
+          {{ content }}
         </div>
       </div>
     </div>
