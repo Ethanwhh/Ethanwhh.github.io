@@ -27,28 +27,28 @@ layout: compress
           </div>
           <div class="subtitle column is-7 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-center-mobile">
             {% unless page.description.size == 0 %}
-            <p id="description" class="content is-small has-text-weight-medium is-uppercase">{{page.description | strip | strip_html | strip_newlines }}</p>
+            <p id="description" class="content is-size-5 has-text-weight-medium">{{page.description | strip | strip_html | strip_newlines }}</p>
             {% endunless %}
-            <p class="subtitle is-6 is-uppercase has-text-weight-normal has-text-black-ter">Published on
-              <b>{{ page.date | date: "%-B %d, %Y" }}</b> by <a href="{% if site.author-url %}{{site.author-url}}{% else %}{{site.url}}{{site.baseurl}}/#about{% endif %}" target="_blank"><b class="has-text-link"><u>{{site.author-name}}</u></b>
+            <p class="subtitle is-5 has-text-weight-normal has-text-black-ter" style="margin-top: 1.5rem;">PUBLISHED ON
+              <b>{{ page.date | date: "%B %d, %Y" | upcase }}</b> BY <a href="{% if site.author-url %}{{site.author-url}}{% else %}{{site.url}}{{site.baseurl}}/#about{% endif %}" target="_blank"><b class="has-text-link"><u>{{site.author-name | upcase }}</u></b>
               </a>
             </p>
             {%- assign tags = page.tags -%}
             {%- unless tags.size == 0 -%}
-            <p class="subtitle is-uppercase">
+            <p class="subtitle is-6" style="margin-top: 1rem;">
               <i class="fas fa-tags"></i>
               {% assign i = 0 %}
               {% for tags in page.tags %}
-              <span class="tag is-link">{{page.tags[i]}}</span>
+              <span class="tag is-link is-medium">{{page.tags[i]}}</span>
               {% assign i = i | plus:1 %}
               {% endfor %}
             </p>
             {%- endunless -%}
             {% assign words = content | number_of_words %}
             {%- unless content.size == 0 -%}
-            <p class="subtitle is-uppercase"><i class="fas fa-clock"></i> <b class="has-text-link">
-                {{ words | divided_by:180 }} min
-              </b>READ</p>
+            <p class="subtitle is-5" style="margin-top: 1rem;"><i class="fas fa-clock"></i> <b class="has-text-link">
+                {{ words | divided_by:180 }} MIN
+              </b> READ</p>
             {%- endunless -%}
           </div>
         </div>
