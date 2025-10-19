@@ -25,7 +25,7 @@ layout: compress
               <img src="{{page.post-image}}" alt="{{post.title}}" id="post-image">
             </figure>
           </div>
-          <div class="subtitle column is-7 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-center-mobile" style="padding-right: 3rem;">
+          <div class="subtitle column is-7 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-center-mobile post-description">
             {% unless page.description.size == 0 %}
             <p id="description" class="content is-size-5 has-text-weight-medium">{{page.description | strip | strip_html | strip_newlines }}</p>
             {% endunless %}
@@ -53,7 +53,7 @@ layout: compress
           </div>
         </div>
         <div class="columns is-variable is-5">
-          <div class="column is-12 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-left-mobile" style="padding-right: 2rem;">
+          <div class="column is-12 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-left-mobile post-content">
             <div class="content">
               {{ content }}
             </div>
@@ -62,6 +62,31 @@ layout: compress
       </div>
     </div>
   </section>
+  
+  <style>
+    /* 桌面端保持右边距 */
+    @media screen and (min-width: 769px) {
+      .post-description {
+        padding-right: 3rem;
+      }
+      .post-content {
+        padding-right: 2rem;
+      }
+    }
+    
+    /* 移动端移除右边距 */
+    @media screen and (max-width: 768px) {
+      .post-description {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .post-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  </style>
+  
   {% include footer.html %}
 </body>
 
