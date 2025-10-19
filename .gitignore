@@ -70,3 +70,31 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 # End of https://www.toptal.com/developers/gitignore/api/jekyll,ruby
+
+### 自定义添加 ###
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# 编辑器备份文件
+*~
+*.swp
+*.swo
+*.bak
+
+# Node modules (如果使用了 npm)
+node_modules/
+
+# 日志文件
+*.log
+npm-debug.log*
