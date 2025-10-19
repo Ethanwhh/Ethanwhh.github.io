@@ -1,12 +1,12 @@
 ---
-title: 我的第三篇博客
+title: 论文分享：NIMBLE：A Non-rigid Hand Model with Bones and Muscles
 layout: post
-post-image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg"
-description: 这是我在新博客上发布的第一篇文章,记录我的学习心得，洪
+post-image: "https://i-blog.csdnimg.cn/direct/8e96aa630cd246f6b1fe8e4379bf2a00.png"
+description: NIMBLE论文解读
 tags:
-- 学习笔记
-- 技术
-- C++
+- 论文分享
+- 手部模型
+- Python
 ---
 
 # 欢迎来到我的博客
