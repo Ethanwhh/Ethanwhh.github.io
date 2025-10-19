@@ -80,21 +80,21 @@
                 </div>
                 {% endunless %}
                 
-                {% unless site.email == %}
-                <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
-                    <a href="mailto:{{site.email}}" 
-                       target="_blank" 
-                       class="button is-large is-white"
-                       title="Email"
-                       style="width: 100px; height: 100px; border-radius: 12px;">
-                        <span class="icon is-large has-text-grey-dark">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </span>
-                    </a>
-                    <p class="has-text-weight-semibold" style="margin-top: 1rem;">Email</p>
-                </div>
-                {% endunless %}
+                {% unless site.zhihu_username == %}
+            <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
+                <a href="https://www.zhihu.com/people/{{site.zhihu_username}}" 
+                    target="_blank" 
+                    class="button is-large is-white"
+                    title="Zhihu"
+                    style="width: 100px; height: 100px; border-radius: 12px;">
+                    <span class="icon is-large has-text-primary">
+                        <i class="fas fa-lightbulb fa-2x"></i>
+                    </span>
+                </a>
+                <p class="has-text-weight-semibold" style="margin-top: 1rem;">Zhihu</p>
             </div>
+            {% endunless %}
+        </div>    
             
             <style>
                 @media screen and (min-width: 769px) {
