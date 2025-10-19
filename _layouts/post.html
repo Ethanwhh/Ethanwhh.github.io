@@ -25,7 +25,7 @@ layout: compress
               <img src="{{page.post-image}}" alt="{{post.title}}" id="post-image">
             </figure>
           </div>
-          <div class="subtitle column is-6 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-center-mobile post-description">
+          <div class="subtitle column is-6.5 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-center-mobile post-description">
             {% unless page.description.size == 0 %}
             <p id="description" class="content is-size-5 has-text-weight-medium">{{page.description | strip | strip_html | strip_newlines }}</p>
             {% endunless %}
