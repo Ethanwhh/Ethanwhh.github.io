@@ -12,7 +12,7 @@ tags:
 # 欢迎来到我的博客
 
 这是我的第一篇博客文章!
-
+![](https://i-blog.csdnimg.cn/direct/8e96aa630cd246f6b1fe8e4379bf2a00.png)
 ## 为什么写博客?
 
 写博客可以帮助我:
