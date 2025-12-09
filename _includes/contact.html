@@ -1,6 +1,6 @@
 <section class="hero is-fullheight has-text-centered" id="contact">
     <div class="hero-body">
-        <div class="container">
+        <div class="container reveal">
             <h1 class="title is-1 is-uppercase has-text-weight-bold has-text-black" style="margin-bottom: 2rem; margin-left: 0; margin-right: 0;">
                 Contact Me
             </h1>
@@ -36,62 +36,58 @@
             <!-- 使用自定义网格布局 -->
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 900px; margin: 0 auto; padding: 0 1rem;">
                 {% unless site.github_username == %}
-                <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
+                <div class="social-card-container">
                     <a href="https://github.com/{{site.github_username}}" 
                        target="_blank" 
-                       class="button is-large is-white"
-                       title="GitHub"
-                       style="width: 100px; height: 100px; border-radius: 12px;">
+                       class="button is-large is-white social-card"
+                       title="GitHub">
                         <span class="icon is-large has-text-black">
                             <i class="fab fa-github fa-2x"></i>
                         </span>
                     </a>
-                    <p class="has-text-weight-semibold" style="margin-top: 1rem;">GitHub</p>
+                    <p class="has-text-weight-semibold social-label">GitHub</p>
                 </div>
                 {% endunless %}
                 
                 {% unless site.xiaohongshu_username == %}
-                <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
+                <div class="social-card-container">
                     <a href="https://www.xiaohongshu.com/user/profile/{{site.xiaohongshu_username}}" 
                        target="_blank" 
-                       class="button is-large is-white"
-                       title="Xiaohongshu"
-                       style="width: 100px; height: 100px; border-radius: 12px;">
+                       class="button is-large is-white social-card"
+                       title="Xiaohongshu">
                         <span class="icon is-large has-text-danger">
                             <i class="fas fa-book fa-2x"></i>
                         </span>
                     </a>
-                    <p class="has-text-weight-semibold" style="margin-top: 1rem;">Rednote</p>
+                    <p class="has-text-weight-semibold social-label">Rednote</p>
                 </div>
                 {% endunless %}
                 
                 {% unless site.bilibili_uid == %}
-                <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
+                <div class="social-card-container">
                     <a href="https://space.bilibili.com/{{site.bilibili_uid}}" 
                        target="_blank" 
-                       class="button is-large is-white"
-                       title="Bilibili"
-                       style="width: 100px; height: 100px; border-radius: 12px;">
+                       class="button is-large is-white social-card"
+                       title="Bilibili">
                         <span class="icon is-large has-text-info">
-                            <i class="fas fa-tv fa-2x"></i>
+                            <i class="fab fa-bilibili fa-2x"></i>
                         </span>
                     </a>
-                    <p class="has-text-weight-semibold" style="margin-top: 1rem;">Bilibili</p>
+                    <p class="has-text-weight-semibold social-label">Bilibili</p>
                 </div>
                 {% endunless %}
                 
                 {% unless site.zhihu_username == %}
-            <div style="flex: 0 0 calc(50% - 1rem); max-width: 150px; display: flex; flex-direction: column; align-items: center;">
+            <div class="social-card-container">
                 <a href="https://www.zhihu.com/people/{{site.zhihu_username}}" 
                     target="_blank" 
-                    class="button is-large is-white"
-                    title="Zhihu"
-                    style="width: 100px; height: 100px; border-radius: 12px;">
+                    class="button is-large is-white social-card"
+                    title="Zhihu">
                     <span class="icon is-large has-text-primary">
-                        <i class="fas fa-lightbulb fa-2x"></i>
+                        <i class="fab fa-zhihu fa-2x"></i>
                     </span>
                 </a>
-                <p class="has-text-weight-semibold" style="margin-top: 1rem;">Zhihu</p>
+                <p class="has-text-weight-semibold social-label">Zhihu</p>
             </div>
             {% endunless %}
         </div>    
