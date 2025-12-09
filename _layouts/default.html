@@ -39,6 +39,10 @@ layout: compress
 
   // Scroll Reveal
   window.addEventListener('scroll', reveal);
+  
+  // Trigger reveal on load
+  document.addEventListener('DOMContentLoaded', reveal);
+  
   function reveal(){
     var reveals = document.querySelectorAll('.reveal');
     for(var i = 0; i < reveals.length; i++){
