@@ -1,96 +1,69 @@
 <section class="hero is-fullheight has-text-centered" id="contact">
     <div class="hero-body">
         <div class="container reveal">
-            <h1 class="title is-1 is-uppercase has-text-weight-bold has-text-black" style="margin-bottom: 2rem; margin-left: 0; margin-right: 0;">
-                Contact Me
-            </h1>
-            <br><br>
-            <h2 class="subtitle is-4 has-text-grey" style="margin-bottom: 3rem; padding-left: 1rem; padding-right: 1rem;">
-                Feel free to reach out through any of the following ways
-            </h2>
-            
-            <!-- Email Contact Button -->
-            {% unless site.email == %}
-            <div style="padding: 0 1rem; margin-bottom: 2rem;">
-                <div style="max-width: 600px; margin: 0 auto;">
-                    <a href="mailto:{{site.email}}"
-                        class="button is-large is-fullwidth is-rounded is-black is-outlined has-text-weight-semibold"
-                        target="_blank"
-                        style="padding: 1.5rem 1rem;">
-                        <span class="icon is-medium" style="margin-right: 0.75rem;">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span>Send me an Email</span>
-                    </a>
+            <div class="columns is-centered">
+                <div class="column is-8-desktop is-10-tablet">
+                    <h1 class="title is-1 is-uppercase has-text-weight-bold has-text-black mb-6">
+                        Let's Connect
+                    </h1>
+                    
+                    <div class="box has-background-white p-6 contact-box">
+                        <h2 class="subtitle is-4 has-text-grey mb-5">
+                            Feel free to reach out for collaborations or just a friendly hello!
+                        </h2>
+                        
+                        <!-- Email Button -->
+                        {% unless site.email == %}
+                        <div class="mb-6">
+                            <a href="mailto:{{site.email}}"
+                                class="button is-black is-large is-rounded has-text-weight-semibold hover-lift"
+                                target="_blank">
+                                <span class="icon is-medium mr-2">
+                                    <i class="fas fa-paper-plane"></i>
+                                </span>
+                                <span>Send me an Email</span>
+                            </a>
+                        </div>
+                        {% endunless %}
+                        
+                        <div class="divider is-size-6 has-text-grey-light mb-6">OR FIND ME ON</div>
+                        
+                        <!-- Social Icons Grid -->
+                        <div class="social-grid">
+                            {% unless site.github_username == %}
+                            <a href="https://github.com/{{site.github_username}}" target="_blank" class="social-item hover-lift" title="GitHub">
+                                <span class="icon is-large has-text-black"><i class="fab fa-github fa-2x"></i></span>
+                                <span class="social-name">GitHub</span>
+                            </a>
+                            {% endunless %}
+                            
+                            {% unless site.xiaohongshu_username == %}
+                            <a href="https://www.xiaohongshu.com/user/profile/{{site.xiaohongshu_username}}" target="_blank" class="social-item hover-lift" title="Rednote">
+                                <span class="icon is-large has-text-danger"><i class="fas fa-book fa-2x"></i></span>
+                                <span class="social-name">Rednote</span>
+                            </a>
+                            {% endunless %}
+                            
+                            {% unless site.bilibili_uid == %}
+                            <a href="https://space.bilibili.com/{{site.bilibili_uid}}" target="_blank" class="social-item hover-lift" title="Bilibili">
+                                <span class="icon is-large has-text-info"><i class="fab fa-bilibili fa-2x"></i></span>
+                                <span class="social-name">Bilibili</span>
+                            </a>
+                            {% endunless %}
+                            
+                            {% unless site.zhihu_username == %}
+                            <a href="https://www.zhihu.com/people/{{site.zhihu_username}}" target="_blank" class="social-item hover-lift" title="Zhihu">
+                                <span class="icon is-large has-text-primary"><i class="fab fa-zhihu fa-2x"></i></span>
+                                <span class="social-name">Zhihu</span>
+                            </a>
+                            {% endunless %}
+                        </div>
+                    </div>
                 </div>
             </div>
-            {% endunless %}
-            
-            <hr style="margin: 3rem auto; width: 80%; max-width: 600px;">
-            
-            <!-- Social Media Icons Section -->
-            <h3 class="title is-4 has-text-weight-semibold has-text-black" style="margin-bottom: 2.5rem; margin-top: 2rem; margin-left: 0; margin-right: 0;">
-                Find Me On These Platforms
-            </h3>
-            
-            <!-- 使用自定义网格布局 -->
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 900px; margin: 0 auto; padding: 0 1rem;">
-                {% unless site.github_username == %}
-                <div class="social-card-container">
-                    <a href="https://github.com/{{site.github_username}}" 
-                       target="_blank" 
-                       class="button is-large is-white social-card"
-                       title="GitHub">
-                        <span class="icon is-large has-text-black">
-                            <i class="fab fa-github fa-2x"></i>
-                        </span>
-                    </a>
-                    <p class="has-text-weight-semibold social-label">GitHub</p>
-                </div>
-                {% endunless %}
-                
-                {% unless site.xiaohongshu_username == %}
-                <div class="social-card-container">
-                    <a href="https://www.xiaohongshu.com/user/profile/{{site.xiaohongshu_username}}" 
-                       target="_blank" 
-                       class="button is-large is-white social-card"
-                       title="Xiaohongshu">
-                        <span class="icon is-large has-text-danger">
-                            <i class="fas fa-book fa-2x"></i>
-                        </span>
-                    </a>
-                    <p class="has-text-weight-semibold social-label">Rednote</p>
-                </div>
-                {% endunless %}
-                
-                {% unless site.bilibili_uid == %}
-                <div class="social-card-container">
-                    <a href="https://space.bilibili.com/{{site.bilibili_uid}}" 
-                       target="_blank" 
-                       class="button is-large is-white social-card"
-                       title="Bilibili">
-                        <span class="icon is-large has-text-info">
-                            <i class="fab fa-bilibili fa-2x"></i>
-                        </span>
-                    </a>
-                    <p class="has-text-weight-semibold social-label">Bilibili</p>
-                </div>
-                {% endunless %}
-                
-                {% unless site.zhihu_username == %}
-            <div class="social-card-container">
-                <a href="https://www.zhihu.com/people/{{site.zhihu_username}}" 
-                    target="_blank" 
-                    class="button is-large is-white social-card"
-                    title="Zhihu">
-                    <span class="icon is-large has-text-primary">
-                        <i class="fab fa-zhihu fa-2x"></i>
-                    </span>
-                </a>
-                <p class="has-text-weight-semibold social-label">Zhihu</p>
-            </div>
-            {% endunless %}
-        </div>    
+        </div>
+    </div>
+</section>    
             
             <style>
                 @media screen and (min-width: 769px) {
