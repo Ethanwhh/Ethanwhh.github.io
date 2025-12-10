@@ -61,15 +61,22 @@ a.navbar-item.is-active {
         content: "";
     }
 }
-.title {
+/* .title {
     margin: auto 0.75rem!important;
-}
+} */
 .subtitle {
-    letter-spacing: 0.25rem;
+    letter-spacing: 0.1rem;
+}
+
+/* Custom Utilities */
+@media screen and (max-width: 768px) {
+    .is-justify-content-center-mobile {
+        justify-content: center !important;
+    }
 }
 
 #about {
-    .image {
+    /* .image {
         max-width: 20vmax;
         margin: auto;
 
@@ -81,7 +88,7 @@ a.navbar-item.is-active {
     a {
         min-width: 25vmax;
         margin: 0.5rem;
-    }
+    } */
 }
 
 #contact {
