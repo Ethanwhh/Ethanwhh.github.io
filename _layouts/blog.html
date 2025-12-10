@@ -10,17 +10,25 @@ layout: compress
 <body>
     {% include navbar.html %}
 
-    <section class="hero is-fullheight" id="blog">
+    <section class="hero is-medium" id="blog">
         <div class="hero-body">
             <div class="container">
                 {% include blogpage-heading.html %}
             </div>
         </div>
-        <div id="results-container"></div>
-        <!--Blog Cards Section-->
-        {% for post in site.posts %}
-            {% include blog-card.html %}
-        {% endfor %}
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div id="results-container"></div>
+            <!--Blog Cards Section-->
+            <div class="columns is-multiline is-centered">
+                <div class="column is-8-desktop is-10-tablet">
+                    {% for post in site.posts %}
+                        {% include blog-card.html %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </section>
     <br>

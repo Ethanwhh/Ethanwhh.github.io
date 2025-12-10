@@ -1,17 +1,26 @@
 <div class="columns is-centered is-multiline">
-  {% for project in site.data.projects %}
-    <div class="column has-text-centered is-one-third-widescreen is-one-third-desktop is-one-third-tablet is-full-mobile reveal"
-      id="project-card">
-      <a href="{{project.link}}" target="_blank">
-      <div class="has-background-black card">
-        <figure class="image is-3by1" style="background-image: url({{project.image}});">
-        </figure>
-        <div class="card-content">
-          <h1 class="title has-text-white is-size-4">{{ project.name }}</h1>
-          <p class="has-text-white has-text-weight-light content">{{ project.description | truncate: 80}}</p>
+    <div class="column is-8-desktop is-10-tablet">
+        {% for project in site.data.projects %}
+        <div class="box project-card hover-lift mb-6 p-0" style="overflow: hidden; border-radius: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <a href="{{project.link}}" target="_blank" class="columns is-gapless" style="text-decoration: none; height: 100%;">
+                <!-- Image Column -->
+                <div class="column is-5-desktop is-12-mobile">
+                    <div class="image" style="background-image: url({{project.image}}); background-size: cover; background-position: center; min-height: 250px; height: 100%;"></div>
+                </div>
+                <!-- Content Column -->
+                <div class="column is-7-desktop is-12-mobile has-text-left p-5" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h3 class="title is-4 has-text-weight-bold mb-3 has-text-black">{{ project.name }}</h3>
+                    <p class="content is-normal has-text-grey-dark mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                        {{ project.description }}
+                    </p>
+                    <div>
+                        <span class="button is-small is-black is-outlined is-rounded">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </span>
+                    </div>
+                </div>
+            </a>
         </div>
-      </div>
-      </a>
+        {% endfor %}
     </div>
-  {% endfor %}
 </div>
