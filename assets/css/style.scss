@@ -407,16 +407,30 @@ a.navbar-item.is-active {
 /* Responsive Tweaks */
 @media screen and (max-width: 768px) {
     .hero-body .title {
-        font-size: 2.5rem !important;
+        font-size: 1.75rem !important;
     }
     .hero-body .subtitle {
-        font-size: 1.25rem !important;
+        font-size: 1rem !important;
     }
     .column {
         padding: 1rem;
     }
     .pl-6-desktop {
         padding-left: 0.75rem !important;
+    }
+    
+    /* Fix for typing effect on mobile causing overflow */
+    .typing-effect {
+        white-space: normal;
+        animation: none;
+        border-right: none;
+        width: auto;
+        display: block;
+    }
+    
+    .typing-wrapper {
+        display: block;
+        width: 100%;
     }
 }
 
