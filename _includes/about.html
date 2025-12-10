@@ -4,12 +4,12 @@
             <div class="columns is-centered is-vcentered">
                 <!-- Profile Column -->
                 <div class="column is-4-desktop is-12-tablet">
-                     <div class="box has-background-white" style="border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem 2rem;">
-                        <figure class="image is-128x128 is-inline-block mb-5">
-                            <img class="is-rounded" src="{{site.author-image}}" alt="{{site.author-name}}" style="border: 4px solid #f5f5f5;">
+                     <div class="box has-background-white" style="border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 3rem 2rem;">
+                        <figure class="image is-128x128" style="margin: 0 auto;">
+                            <img class="is-rounded" src="{{site.author-image}}" alt="{{site.author-name}}" style="border: 4px solid #f5f5f5; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         </figure>
-                        <h2 class="title is-4 has-text-weight-bold mb-2">{{site.author-name}}</h2>
-                        <p class="subtitle is-6 has-text-grey mb-5">
+                        <h2 class="title is-4 has-text-weight-bold mt-5 mb-3">{{site.author-name}}</h2>
+                        <p class="subtitle is-6 has-text-grey mb-6" style="line-height: 1.5;">
                             AI Researcher<br>
                             <span class="is-size-7 has-text-grey-light">Agent & Embodied AI</span>
                         </p>
@@ -29,29 +29,35 @@
                     </div>
                     
                     <div class="columns is-multiline">
-                        <div class="column is-12 mb-4">
-                            <h4 class="title is-5 mb-4"><i class="fas fa-flask mr-2"></i>Research Interests</h4>
+                        <div class="column is-12 mb-5">
+                            <h4 class="title is-5 mb-4 is-flex is-align-items-center justify-content-center-mobile">
+                                <span class="icon mr-2"><i class="fas fa-flask"></i></span>
+                                <span>Research Interests</span>
+                            </h4>
                             <div class="tags are-medium justify-content-center-mobile">
-                                <span class="tag is-white is-rounded shadow-sm py-2 px-3"><i class="fas fa-robot mr-2 has-text-info"></i>AI Agents</span>
-                                <span class="tag is-white is-rounded shadow-sm py-2 px-3"><i class="fas fa-vr-cardboard mr-2 has-text-primary"></i>Embodied AI</span>
-                                <span class="tag is-white is-rounded shadow-sm py-2 px-3"><i class="fas fa-brain mr-2 has-text-warning"></i>LLMs</span>
+                                <span class="tag is-white is-rounded shadow-sm py-2 px-3" style="border: 1px solid #f0f0f0;"><i class="fas fa-robot mr-2 has-text-info"></i>AI Agents</span>
+                                <span class="tag is-white is-rounded shadow-sm py-2 px-3" style="border: 1px solid #f0f0f0;"><i class="fas fa-vr-cardboard mr-2 has-text-primary"></i>Embodied AI</span>
+                                <span class="tag is-white is-rounded shadow-sm py-2 px-3" style="border: 1px solid #f0f0f0;"><i class="fas fa-brain mr-2 has-text-warning"></i>LLMs</span>
                             </div>
                         </div>
                         
                         <div class="column is-12">
-                            <h4 class="title is-5 mb-4"><i class="fas fa-rocket mr-2"></i>What I'm Up To</h4>
+                            <h4 class="title is-5 mb-4 is-flex is-align-items-center justify-content-center-mobile">
+                                <span class="icon mr-2"><i class="fas fa-rocket"></i></span>
+                                <span>What I'm Up To</span>
+                            </h4>
                             <div class="content is-normal">
                                 <ul style="list-style: none; margin-left: 0;">
-                                    <li class="mb-3 is-flex is-align-items-center justify-content-center-mobile">
-                                        <span class="icon has-text-success mr-3"><i class="fas fa-seedling"></i></span>
+                                    <li class="mb-4 is-flex is-align-items-start justify-content-center-mobile">
+                                        <span class="icon has-text-success mr-3 mt-1"><i class="fas fa-seedling"></i></span>
                                         <span><strong>Currently Learning:</strong> Advanced Agent architectures & Embodied AI systems</span>
                                     </li>
-                                    <li class="mb-3 is-flex is-align-items-center justify-content-center-mobile">
-                                        <span class="icon has-text-info mr-3"><i class="fas fa-comment-dots"></i></span>
+                                    <li class="mb-4 is-flex is-align-items-start justify-content-center-mobile">
+                                        <span class="icon has-text-info mr-3 mt-1"><i class="fas fa-comment-dots"></i></span>
                                         <span><strong>Ask Me About:</strong> AI/ML, Entrepreneurship, Open Source</span>
                                     </li>
-                                    <li class="mb-3 is-flex is-align-items-center justify-content-center-mobile">
-                                        <span class="icon has-text-danger mr-3"><i class="fas fa-fire"></i></span>
+                                    <li class="mb-4 is-flex is-align-items-start justify-content-center-mobile">
+                                        <span class="icon has-text-danger mr-3 mt-1"><i class="fas fa-fire"></i></span>
                                         <span><strong>Life Philosophy:</strong> Student of life, forever curious.</span>
                                     </li>
                                 </ul>
