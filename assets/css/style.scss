@@ -676,4 +676,20 @@ a.navbar-item.is-active {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+
+    /* Fix Contact Button Overflow */
+    #contact .button.is-large {
+        font-size: 1.1rem !important;
+        padding: 1rem !important;
+        width: 100% !important;
+        height: auto !important;
+        white-space: normal !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    #contact .button.is-large .icon {
+        margin-right: 0.5rem !important;
+    }
 }
